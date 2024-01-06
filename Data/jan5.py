@@ -15,12 +15,13 @@ def get_similarity_list(pairs, model):
     return ret
 
 def append_model_statistic_to_dfs(model, colname):
-    for y in range(1993, 2025):
+    for y in range(2018, 2025):
         df = pandas.read_pickle(f'{y}.pkl')
         pairs = zip(df.Clue, df.Answer)
         sims = get_similarity_list(pairs, model)
         df.insert(len(df.axes[1]), colname, sims)
         df.to_pickle(f'{y}.pkl')
+        print(y)
         
 bertmodel = SentenceTransformer('all-MiniLM-L12-v2')
 
