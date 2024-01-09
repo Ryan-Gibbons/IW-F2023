@@ -1,12 +1,17 @@
-import pandas as pd ## for handling the dataframe
-import matplotlib.pyplot as plt ## for visualization
+# import pandas as pd ## for handling the dataframe
+# import matplotlib.pyplot as plt ## for visualization
 
-df = pd.read_pickle('summarydataquestion.pkl')
+# df = pd.read_pickle('questiondatanoblanks.pkl')
 
-# plt.errorbar(df['Weekday'], df['Max Ind. Word Similarity'], yerr=df['miwsstd'], fmt='o',
-#              color='Black', elinewidth=3,capthick=3,errorevery=1, alpha=1, ms=4, capsize = 5)
-plt.bar(df['Weekday'], df['Max Ind. Word Similarity'], tick_label = df['Weekday'])
-plt.xlabel('Weekday') ## Label on X axis
-plt.ylabel('Max. Individual Word Similarity') ##Label on Y axis
-plt.title('Maximum Individual Word Similarity for [?] Clues by Weekday')
-plt.show()
+# plt.bar(df['Weekday'], df['Mean Word Similarity'], tick_label = df['Weekday'])
+# plt.xlabel('Weekday') ## Label on X axis
+# plt.ylabel('Mean Word Similarity') ##Label on Y axis
+# plt.title('Mean Word Similarity for [?] Clues by Weekday')
+# plt.show()
+import pandas
+tot = 0
+for i in range(7):
+    df = pandas.read_pickle(f'weekday{i}question.pkl')
+    tot += df.shape[0]
+
+print(tot)
